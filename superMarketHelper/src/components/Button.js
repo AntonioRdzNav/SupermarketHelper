@@ -2,11 +2,11 @@ import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 
 // onPress defractoring contains a function to call
-const Button = ( { onPress }) => {
+const Button = (props) => {
     return (
-        <TouchableOpacity onPress={onPress} style={styles.buttonStyles}>
+        <TouchableOpacity onPress={props.onPress} style={styles.buttonStyles}>
             <Text style={styles.textStyle}>
-                Click me! 
+                { props.children }
             </Text>
         </TouchableOpacity>
     );
