@@ -1,13 +1,13 @@
 // Import library to help create a component
-import { AppRegistry } from 'react-native';
-import App from './App';
+import { AppRegistry, Text } from 'react-native';
+import React from 'react';
 // "./" means start in current directory
-// import Header from './src/components/header';
+import Header from './src/components/Header';
 
 // Create a component
-// const App = () => (
-    {/* <Header headerText={'Shop List'}/> */}
-// );
+const App = () => (
+    <Header headerText={ 'ShopList' } />
+);
 
 
 // Render component 
