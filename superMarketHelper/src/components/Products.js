@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import axios from 'axios';
 import ProductDetail from './ProductDetail';
+import { Header } from './common';
 
 class Products extends Component {
     state = {products: [] };
@@ -20,7 +21,6 @@ class Products extends Component {
     }
 
     render() {
-        console.log(this.state);
         return (
             <View>
                 {this.renderProducts()}
