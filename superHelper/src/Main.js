@@ -9,14 +9,16 @@ class Main extends Component {
     state = { loggedIn: null };
 
     componentWillMount(){
-        firebase.initializeApp({
-            apiKey: 'AIzaSyDzOldsjMt55UxErUM3YhJFd5yQepHZXNQ',
-            authDomain: 'supermarkethelper-c8bcc.firebaseapp.com',
-            databaseURL: 'https://supermarkethelper-c8bcc.firebaseio.com',
-            projectId: 'supermarkethelper-c8bcc',
-            storageBucket: 'supermarkethelper-c8bcc.appspot.com',
-            messagingSenderId: '426815545951'
-        });
+        if(firebase.initializeApp.length){
+            firebase.initializeApp({
+                apiKey: 'AIzaSyDzOldsjMt55UxErUM3YhJFd5yQepHZXNQ',
+                authDomain: 'supermarkethelper-c8bcc.firebaseapp.com',
+                databaseURL: 'https://supermarkethelper-c8bcc.firebaseio.com',
+                projectId: 'supermarkethelper-c8bcc',
+                storageBucket: 'supermarkethelper-c8bcc.appspot.com',
+                messagingSenderId: '426815545951'
+            });
+        }
 
         firebase.auth().onAuthStateChanged((user) => {
             if(user){
