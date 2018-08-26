@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import axios from 'axios';
+import firebase from 'firebase';
 import ProductDetail from './ProductDetail';
-import { Header } from './common';
+import { Header, CardSection, Button, Card } from './common';
 
 class Products extends Component {
     state = {products: [] };
@@ -16,17 +17,37 @@ class Products extends Component {
  
     renderProducts(){
         return this.state.products.map(product => 
-            <ProductDetail key={product.title} product={product}/>
+            <CardSection>
+                <ProductDetail key={product.title} product={product}/>
+            </CardSection>
+
         );
     }
 
     render() {
         return (
-            <View>
-                {this.renderProducts()}
-            </View>
+            <Card >
+                <CardSection>
+                    <Button onPress={() => firebase.auth().signOut()} style={styles.logoutStyle}>
+                        Log Out
+                    </Button>
+                </CardSection>
+                    {this.renderProducts()}
+                <CardSection>
+                    <Text> Total = ... </Text>
+                </CardSection>
+            </Card>
         );
     }
 }
+
+const styles = {
+    logoutStyle:{
+        flex:0.5,
+        alignSelf: 'stretch',
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
+};
 
 export default Products;

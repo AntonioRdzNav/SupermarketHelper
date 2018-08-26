@@ -25,6 +25,6 @@ const styles = {
     textStyle: {
         fontSize: 22
     }
-}
+};
 
 export {Header} ;
