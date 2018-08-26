@@ -4,7 +4,7 @@ import firebase from 'firebase';
 import { Header, Button, CardSection, Spinner } from './components/common';
 import LoginForm from './components/LoginForm';
 
-class App extends Component {
+class Main extends Component {
     state = { loggedIn: null };
 
     componentWillMount(){
@@ -53,4 +53,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default Main;

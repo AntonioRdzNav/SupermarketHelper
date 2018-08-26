@@ -8,17 +8,5 @@ import Products from './src/components/Products';
 
 import Main from './src/Main';
 
-// Create a component
-// const App = () => (
-//     <View>
-//         <Header headerText={ 'Products' } /> 
-//         <Products />
-//     </View>
-// );
-
-
-
-// Render component 
-// ReactNative.AppRegistry.registerComponent('superMarketHelper', () => App);
 AppRegistry.registerComponent('superMarketHelper', () => Main);
  
