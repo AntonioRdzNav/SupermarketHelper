@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import firebase from 'firebase';
 import { Text, View, StyleSheet, Alert } from 'react-native';
 import { Constants, BarCodeScanner, Permissions } from 'expo';
-import UserProductCreate from '../services/UserProductCreate';
 
 class Scanner extends Component {
     state = {
@@ -23,15 +22,11 @@ class Scanner extends Component {
     dataSuccess
 
     _handleBarCodeRead = data => {
+
         Alert.alert(
         'Scan successful!',
         JSON.stringify(data)
         );
-        <UserProductCreate 
-            cantidad = {1}
-            visitado = {true}
-            data = {data}
-        />
         // debugger;
     };
 
