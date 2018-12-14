@@ -1,41 +1,48 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import axios from 'axios';
 import firebase from 'firebase';
 import ProductDetail from './ProductDetail';
-import { Header, CardSection, Button, Card } from './common';
+import { Spinner, Button, Card } from './common';
 
 class Products extends Component {
-    state = {products: [] };
+    state = {products: [], loadingContent: true };
 
     componentWillMount(){
         axios.get('https://rallycoding.herokuapp.com/api/music_albums')
             .then(
-                 response => this.setState({ products: response.data })
+                 response => this.setState({ products: response.data, loadingContent: false })
             );
     }
  
     renderProducts(){
-        return this.state.products.map(product => 
-            <CardSection>
+        if(this.state.loadingContent)
+            return(
+                <View style={styles.spinnerStyle}>
+                    <Spinner size="large"/>
+                </View>
+            )
+        return (
+            this.state.products.map(product => 
                 <ProductDetail key={product.title} product={product}/>
-            </CardSection>
-
+            )
+        );
+    }
+    renderButton(){
+        return(
+            <Button onPress={() => firebase.auth().signOut()} style={styles.logoutStyle}>
+                Log Out
+            </Button>  
         );
     }
 
     render() {
         return (
-            <Card >
-                <CardSection>
-                    <Button onPress={() => firebase.auth().signOut()} style={styles.logoutStyle}>
-                        Log Out
-                    </Button>
-                </CardSection>
-                    {this.renderProducts()}
-                <CardSection>
-                    <Text> Total = ... </Text>
-                </CardSection>
+            <Card>
+                <ScrollView>
+                    {this.renderProducts()}  
+                    {this.renderButton()}             
+                </ScrollView>                                                     
             </Card>
         );
     }
@@ -43,10 +50,13 @@ class Products extends Component {
 
 const styles = {
     logoutStyle:{
-        flex:0.5,
+        flex:1,
         alignSelf: 'stretch',
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    spinnerStyle:{
+        padding: 40
     }
 };
 

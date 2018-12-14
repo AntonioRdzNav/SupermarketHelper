@@ -12,37 +12,34 @@ const TabIcon = ({ selected, title }) => {
 
 export default class App extends React.Component {
   render() {
-    return (
-      <Router>
-      <Scene key="root">
-        {/* Tab Container */}
-        <Scene
-          key="tabbar"
-          tabs={true}
-          tabBarStyle={{ backgroundColor: '#FFFFFF' }}
-        >
-          {/* Tab and it's scenes */}
-          <Scene key="List" title="LIST" icon={TabIcon}>
-            <Scene 
-              key="list"
-              component={Main}
-              title="Main"
-              initial
-            />
+      return (
+        <Router>
+          <Scene key="root">
+            <Scene
+              key="tabbar"
+              tabs={true}
+              tabBarStyle={{ backgroundColor: '#FFFFFF', height: '7%' }}
+            >
+              <Scene key="List" title="LIST" icon={TabIcon}>
+                  <Scene 
+                    key="list"
+                    component={Main}
+                    title="Main"
+                    initial
+                  />
+              </Scene>
+              <Scene key="Cam" title="CAMERA" icon={TabIcon}>
+                <Scene 
+                  key="list"
+                  component={Scanner}
+                  title="Scanner"
+                  initial
+                />
+              </Scene>
+            </Scene>
           </Scene>
-        <Scene key="Cam" title="CAMERA" icon={TabIcon}>
-            <Scene 
-              key="list"
-              component={Scanner}
-              title="Scanner"
-              initial
-            />
-          </Scene>
-        </Scene>
-      </Scene>
-    </Router>
-  );
-
+        </Router>
+      );
   }
 }
 

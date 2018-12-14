@@ -42,8 +42,8 @@ class Main extends Component {
 
     render() {
         return ( 
-            <View>
-                <Header headerText="Log in"/>
+            // {flex: 1} expands all it can
+            <View style={ {flex: 1} }>  
                 {this.renderContent()}
             </View>
         );

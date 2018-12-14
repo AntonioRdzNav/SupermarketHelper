@@ -12,6 +12,7 @@ const Input = (props) => {
                 style={styles.inputStyle}
                 value={props.value}
                 onChangeText={props.onChangeText}
+                underlineColorAndroid='transparent'
             />
         </View>
     );
