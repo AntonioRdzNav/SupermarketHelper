@@ -20,13 +20,13 @@ export default class App extends React.Component {
               tabs={true}
               tabBarStyle={{ backgroundColor: '#FFFFFF', height: '7%' }}
             >
-              <Scene key="List" title="LIST" icon={TabIcon}>
-                  <Scene 
-                    key="list"
-                    component={Main}
-                    title="Main"
-                    initial
-                  />
+              <Scene key="List" title="LIST" icon={TabIcon}>                  
+                    <Scene 
+                      key="list"
+                      component={Main}
+                      title="Main"
+                      initial
+                    />
               </Scene>
               <Scene key="Cam" title="CAMERA" icon={TabIcon}>
                 <Scene 

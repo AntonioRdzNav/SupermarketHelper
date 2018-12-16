@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import firebase from 'firebase';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import reducers from './reducers';
 import { Header, Button, CardSection, Spinner } from './components/common';
 import LoginForm from './components/LoginForm';
 import Products from './components/Products';
@@ -42,10 +45,11 @@ class Main extends Component {
 
     render() {
         return ( 
-            // {flex: 1} expands all it can
-            <View style={ {flex: 1} }>  
-                {this.renderContent()}
-            </View>
+            <Provider store={createStore(reducers)}>
+                <View style={ {flex: 1} }>  
+                    {this.renderContent()}
+                </View>                
+            </Provider>  
         );
     }
 }

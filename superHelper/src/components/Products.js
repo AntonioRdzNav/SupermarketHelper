@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { ScrollView, View } from 'react-native';
 import axios from 'axios';
 import firebase from 'firebase';
+import {connect} from 'react-redux';    
 import ProductDetail from './ProductDetail';
 import { Spinner, Button, Card } from './common';
 
@@ -37,16 +38,20 @@ class Products extends Component {
     }
 
     render() {
-        return (
-            <Card>
-                <ScrollView>
-                    {this.renderProducts()}  
-                    {this.renderButton()}             
-                </ScrollView>                                                     
-            </Card>
+        return (            
+                <Card>
+                    <ScrollView>
+                        {this.renderProducts()}  
+                        {this.renderButton()}             
+                    </ScrollView>                                                     
+                </Card>                                      
         );
     }
 }
+
+const mapStateToProps = state => {
+    return { libraries: state.libraries };
+}   
 
 const styles = {
     logoutStyle:{
@@ -60,4 +65,4 @@ const styles = {
     }
 };
 
-export default Products;
+export default connect(mapStateToProps)(Products);
